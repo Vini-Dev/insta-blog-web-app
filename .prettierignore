@@ -1,0 +1,6 @@
+# **/*.json
+**/*.txt
+**/*.xml
+**/*.svg
+src/reportWebVitals.ts
+src/setupTests.ts

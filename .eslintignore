@@ -1,0 +1,4 @@
+node_modules/*
+tsconfig.json
+src/reportWebVitals.ts
+src/setupTests.ts
