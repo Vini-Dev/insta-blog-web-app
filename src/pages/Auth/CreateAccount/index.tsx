@@ -6,27 +6,31 @@ import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import Button, { ButtonHandlers } from 'src/components/Button';
 import Input from 'src/components/Input';
+import Textarea from 'src/components/Textarea';
 import Title from 'src/components/Title';
 import { defaultOptions, formatErrors } from 'src/libs/yup';
 import api from 'src/services/api';
 import { Creators as AuthActions } from 'src/store/ducks/auth';
 import getApiErrors from 'src/utils/getApiErrors';
-import loginSchema from 'src/validators/auth/login.schema';
+import createAccountSchema from 'src/validators/auth/createAccount.schema';
 
 import {
-  CreateAccount,
-  CreateAccountLink,
-  CreateAccountLinkHighlight,
   Container,
   Content,
+  LogIn,
+  LogInLink,
+  LogInLinkHighlight,
 } from './styles';
 
 interface FormData {
+  name: string;
   user: string;
+  biography: string;
   password: string;
+  password_confirmation: string;
 }
 
-const Login: FC = () => {
+const CreateAccount: FC = () => {
   const buttonRef = useRef<ButtonHandlers>(null);
   const formRef = useRef<FormHandles>(null);
 
@@ -35,7 +39,7 @@ const Login: FC = () => {
   const authRequest = async (data: FormData) => {
     try {
       console.log({ data });
-      const response = await api.post('/sessions', data);
+      const response = await api.post('/users', data);
 
       const { token, user } = response.data;
       dispatch(AuthActions.authSuccess(token, user));
@@ -61,7 +65,7 @@ const Login: FC = () => {
     formRef.current?.setErrors({});
 
     try {
-      const data: FormData = await loginSchema.validate(
+      const data: FormData = await createAccountSchema.validate(
         formData,
         defaultOptions
       );
@@ -80,28 +84,34 @@ const Login: FC = () => {
   return (
     <Container>
       <Content>
-        <Title variant="title">Login</Title>
+        <Title variant="title">Create Account</Title>
         <Form ref={formRef} onSubmit={handleOnSubmit}>
+          <Input id="name" label="Name" name="name" />
           <Input id="user" label="User" name="user" />
+          <Textarea id="biography" label="Biography" name="biography" />
           <Input
             id="password"
             label="Password"
             name="password"
             type="password"
           />
-          <Button ref={buttonRef} label="Log In" type="submit" />
+          <Input
+            id="password_confirmation"
+            label="Confirm password"
+            name="password_confirmation"
+            type="password"
+          />
+          <Button ref={buttonRef} label="Create" type="submit" />
         </Form>
-        <CreateAccount>
-          <CreateAccountLink to="/create-account">
+        <LogIn>
+          <LogInLink to="/create-account">
             No have account?{' '}
-            <CreateAccountLinkHighlight>
-              Sing up now!
-            </CreateAccountLinkHighlight>
-          </CreateAccountLink>
-        </CreateAccount>
+            <LogInLinkHighlight>Sing up now!</LogInLinkHighlight>
+          </LogInLink>
+        </LogIn>
       </Content>
     </Container>
   );
 };
 
-export default Login;
+export default CreateAccount;

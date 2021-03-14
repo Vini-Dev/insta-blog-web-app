@@ -32,14 +32,14 @@ export const Content = styled.div`
   }
 `;
 
-export const CreateAccount = styled.div`
+export const LogIn = styled.div`
   display: flex;
   justify-content: center;
 
   margin-top: 24px;
 `;
 
-export const CreateAccountLink = styled(Link)`
+export const LogInLink = styled(Link)`
   font-size: 14px;
   font-weight: 400;
   color: ${({ theme }: ThemeType) => theme.gray3};
@@ -53,7 +53,7 @@ export const CreateAccountLink = styled(Link)`
   }
 `;
 
-export const CreateAccountLinkHighlight = styled.span`
+export const LogInLinkHighlight = styled.span`
   color: ${({ theme }: ThemeType) => theme.primary};
   font-weight: 600;
 `;

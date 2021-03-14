@@ -29,52 +29,46 @@ export const Container = styled.div`
 export const Content = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 
   max-width: ${sizes.tablet};
   margin: 0 auto;
   padding: 16px 0;
 `;
 
-export const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 64px 1fr;
-  /* grid-gap: 16px; */
-
-  align-items: center;
-`;
-
-export const Links = styled.div`
-  display: flex;
-`;
-
 export const CustomLink = styled(Link)`
   display: flex;
   align-items: center;
-  height: 32px;
-  padding: 0 8px;
-  text-decoration: none;
-  border-radius: 4px;
+  justify-content: center;
+
+  height: 28px;
+  width: 28px;
 
   &:not(:last-of-type) {
+    margin-right: 4px;
+  }
+
+  &:last-of-type {
     margin-right: 16px;
   }
 
   ${({ theme }: ThemeType) => css`
-    color: ${theme.topNavigation.link.normal.foreground};
-    background-color: ${theme.topNavigation.link.normal.background};
-
-    transition: background-color 200ms linear, background-color 200ms linear,
-      color 200ms linear;
+    svg {
+      font-size: 24px;
+      color: ${theme.topNavigation.link.normal.foreground};
+      transition: color 200ms linear;
+    }
 
     &:hover {
-      color: ${theme.topNavigation.link.hover.foreground};
-      background-color: ${theme.topNavigation.link.hover.background};
+      svg {
+        color: ${theme.topNavigation.link.hover.foreground};
+      }
     }
 
     &.active {
-      color: ${theme.topNavigation.link.active.foreground};
-      background-color: ${theme.topNavigation.link.active.background};
+      svg {
+        color: ${theme.topNavigation.link.active.foreground};
+      }
     }
   `}
 `;

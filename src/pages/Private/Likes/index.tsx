@@ -5,7 +5,7 @@ import PostsSideContent from 'src/components/PostsSideContent';
 import Posts from './Posts';
 import { Container } from './styles';
 
-const Home: FC = () => {
+const Likes: FC = () => {
   return (
     <Container>
       <PostsSideContent />
@@ -14,4 +14,4 @@ const Home: FC = () => {
   );
 };
 
-export default Home;
+export default Likes;

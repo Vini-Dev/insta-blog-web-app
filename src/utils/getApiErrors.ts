@@ -14,8 +14,8 @@ interface FunctionReturns {
 const getApiErrors = (errors: Params): FunctionReturns => {
   const fieldErrors = {};
 
-  if (errors?.response?.status === 422 && errors?.response?.data?.errors) {
-    errors.response.data.errors.forEach((error: Errors) => {
+  if (errors?.response?.status === 422 && errors?.response?.data) {
+    errors.response.data.forEach((error: Errors) => {
       fieldErrors[error.field] = error.message;
     });
 

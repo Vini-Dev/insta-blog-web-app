@@ -24,7 +24,7 @@ const Posts: FC = () => {
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const response = await api.get('/posts');
+        const response = await api.get('/posts?myLikes=true');
 
         setPosts(response.data);
       } catch (error) {

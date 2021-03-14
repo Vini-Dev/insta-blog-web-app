@@ -21,6 +21,13 @@ export const authRoutes: RouteInterface[] = [
     path: '/login',
     type: 'auth',
   },
+  {
+    exact: true,
+    component: AuthPages.CreateAccount,
+    label: 'Create Account',
+    path: '/create-account',
+    type: 'auth',
+  },
 ];
 
 export const privateRoutes: RouteInterface[] = [
@@ -29,6 +36,13 @@ export const privateRoutes: RouteInterface[] = [
     component: PrivatePages.Home,
     label: 'Home',
     path: '/',
+    type: 'private',
+  },
+  {
+    exact: true,
+    component: PrivatePages.Likes,
+    label: 'Likes',
+    path: '/likes',
     type: 'private',
   },
 ];

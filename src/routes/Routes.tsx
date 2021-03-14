@@ -18,18 +18,18 @@ const Routes: FC = () => {
   };
 
   const createRoute = (route) => {
-    // const key = route.type + route.path;
+    const key = route.type + route.path;
 
     const pageTitle = mountTitle(route.title, route.label);
 
     switch (true) {
       case route.type === 'private':
-        return <PrivateRoute title={pageTitle} {...route} />;
+        return <PrivateRoute key={key} title={pageTitle} {...route} />;
       case route.type === 'public':
-        return <PublicRoute title={pageTitle} {...route} />;
+        return <PublicRoute key={key} title={pageTitle} {...route} />;
 
       default:
-        return <AuthRoute title={pageTitle} {...route} />;
+        return <AuthRoute key={key} title={pageTitle} {...route} />;
     }
   };
 

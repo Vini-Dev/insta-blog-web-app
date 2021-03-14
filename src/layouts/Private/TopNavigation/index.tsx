@@ -1,33 +1,42 @@
 import { FC } from 'react';
 
+import { IoIosHome, IoIosHeart, IoIosHeartEmpty } from 'react-icons/io';
+import { IoHomeOutline } from 'react-icons/io5';
 import { useLocation } from 'react-router-dom';
 import Avatar from 'src/components/Avatar';
-// import { ReactComponent as Logo } from 'src/assets/svg/logo.svg';
-import routes from 'src/routes';
 
-import { Container, Content, CustomLink, Grid, Links } from './styles';
+import { Container, Content, CustomLink } from './styles';
 
 const TopNavigation: FC = () => {
-  const { pathname } = useLocation();
+  const location = useLocation();
+
+  const links = [
+    {
+      pathname: '/',
+      activeIcon: <IoIosHome />,
+      inactiveIcon: <IoHomeOutline />,
+    },
+    {
+      pathname: '/likes',
+      activeIcon: <IoIosHeart />,
+      inactiveIcon: <IoIosHeartEmpty />,
+    },
+  ];
 
   return (
     <Container>
       <Content>
-        <Grid>
-          <Links>
-            {routes
-              .filter(({ type }) => type === 'private')
-              .map(({ label, path }) => (
-                <CustomLink
-                  className={pathname.includes(path) ? 'active' : ''}
-                  key={path}
-                  to={path}
-                >
-                  {label}
-                </CustomLink>
-              ))}
-          </Links>
-        </Grid>
+        {links.map(({ activeIcon, inactiveIcon, pathname }) => {
+          const icon =
+            location.pathname === pathname ? activeIcon : inactiveIcon;
+
+          return (
+            <CustomLink key={pathname} to={pathname}>
+              {icon}
+            </CustomLink>
+          );
+        })}
+
         <Avatar size={32} />
       </Content>
     </Container>

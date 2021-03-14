@@ -55,3 +55,30 @@ export const UserName = styled.div`
   font-weight: 400;
   color: #ffffff;
 `;
+
+export const Controls = styled.div`
+  padding: 8px 0;
+`;
+
+interface LikeButtonInterface extends ThemeType {
+  liked: boolean;
+}
+export const LikeButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  background: none;
+  border: none;
+
+  svg {
+    font-size: 24px;
+    color: ${({ liked, theme }: LikeButtonInterface) =>
+      liked ? theme.success : theme.gray3};
+
+    transition: 200ms linear color;
+  }
+`;
