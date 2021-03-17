@@ -86,6 +86,7 @@ const ImageInput: FC<InputProps> = ({
           ref={inputRef}
           onChange={handlePreview}
           {...rest}
+          accept="image/jpg, image/jpeg, image/png"
         />
         <InputErrorMessage
           fieldLabel={label}
