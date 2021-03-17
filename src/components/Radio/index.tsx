@@ -75,9 +75,11 @@ const Radio: FC<InputProps> = ({ label, name, options, ...rest }) => {
           {option.label}
         </FieldLabel>
       ))}
-      {error && (
-        <InputErrorMessage>{error.replace(name, label)}</InputErrorMessage>
-      )}
+      <InputErrorMessage
+        fieldLabel={label}
+        fieldName={fieldName}
+        message={error}
+      />
     </Container>
   );
 };

@@ -17,6 +17,7 @@ export const FieldContainer = styled.div`
 export const Field = styled.textarea`
   font-size: 14px;
   font-weight: 400;
+  -webkit-appearance: none;
 
   resize: vertical;
 

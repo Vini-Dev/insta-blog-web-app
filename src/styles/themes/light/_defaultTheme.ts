@@ -11,6 +11,7 @@ export const colors = {
   error: '#FF3B30',
   info: '#5AC8FA',
   warning: '#FFCC01',
+  white: '#ffffff',
   primary,
   secondary,
   success: '#34C759',

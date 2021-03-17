@@ -121,9 +121,11 @@ const Input: ForwardRefRenderFunction<InputHandlers, InputProps> = (
           <ControlSecurityEntry onChange={handleOnChangeControlSecurityEntry} />
         )}
       </FieldContainer>
-      {error && (
-        <InputErrorMessage>{error.replace(name, label)}</InputErrorMessage>
-      )}
+      <InputErrorMessage
+        fieldLabel={label}
+        fieldName={fieldName}
+        message={error}
+      />
     </Container>
   );
 };

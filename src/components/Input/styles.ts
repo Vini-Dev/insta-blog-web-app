@@ -16,7 +16,7 @@ export const FieldContainer = styled.div`
 
 export const Field = styled.input`
   width: 100%;
-
+  -webkit-appearance: none;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 400;

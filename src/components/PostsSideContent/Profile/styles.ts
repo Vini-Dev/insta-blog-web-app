@@ -5,21 +5,35 @@ import { ThemeType } from 'src/styles/themes/light';
 export const Container = styled.div``;
 
 export const User = styled.div`
-  display: flex;
-  align-items: center;
-
   .root-avatar {
     margin-right: 8px;
   }
+
+  a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
 `;
 
-export const Name = styled.div`
+export const ProfileNames = styled.div``;
+
+export const Username = styled.div`
   display: flex;
   align-items: center;
 
   font-size: 14px;
   font-weight: 400;
   color: ${({ theme }: ThemeType) => theme.gray6};
+`;
+
+export const Name = styled.div`
+  display: flex;
+  align-items: center;
+
+  font-size: 12px;
+  font-weight: 400;
+  color: ${({ theme }: ThemeType) => theme.gray3};
 `;
 
 export const Biography = styled.div`

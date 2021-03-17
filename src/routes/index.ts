@@ -45,6 +45,13 @@ export const privateRoutes: RouteInterface[] = [
     path: '/likes',
     type: 'private',
   },
+  {
+    exact: true,
+    component: PrivatePages.Profile,
+    label: 'Profile',
+    path: '/profile',
+    type: 'private',
+  },
 ];
 
 export const publicRoutes: RouteInterface[] = [

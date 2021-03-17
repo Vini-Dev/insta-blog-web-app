@@ -3,9 +3,10 @@ import { FC } from 'react';
 import { IoIosHome, IoIosHeart, IoIosHeartEmpty } from 'react-icons/io';
 import { IoHomeOutline } from 'react-icons/io5';
 import { useLocation } from 'react-router-dom';
-import Avatar from 'src/components/Avatar';
+import Title from 'src/components/Title';
 
-import { Container, Content, CustomLink } from './styles';
+import { Container, Content, CustomLink, Links } from './styles';
+import User from './User';
 
 const TopNavigation: FC = () => {
   const location = useLocation();
@@ -26,18 +27,20 @@ const TopNavigation: FC = () => {
   return (
     <Container>
       <Content>
-        {links.map(({ activeIcon, inactiveIcon, pathname }) => {
-          const icon =
-            location.pathname === pathname ? activeIcon : inactiveIcon;
+        <Title variant="subtitle">InstaBlog</Title>
+        <Links>
+          {links.map(({ activeIcon, inactiveIcon, pathname }) => {
+            const icon =
+              location.pathname === pathname ? activeIcon : inactiveIcon;
 
-          return (
-            <CustomLink key={pathname} to={pathname}>
-              {icon}
-            </CustomLink>
-          );
-        })}
-
-        <Avatar size={32} />
+            return (
+              <CustomLink key={pathname} to={pathname}>
+                {icon}
+              </CustomLink>
+            );
+          })}
+          <User />
+        </Links>
       </Content>
     </Container>
   );

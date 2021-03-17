@@ -40,7 +40,7 @@ const Login: FC = () => {
       const { token, user } = response.data;
       dispatch(AuthActions.authSuccess(token, user));
     } catch (error) {
-      const status = error.response.status;
+      const status = error?.response?.status;
 
       if (status === 422) {
         const errors = getApiErrors(error);
@@ -48,8 +48,10 @@ const Login: FC = () => {
       } else if (status === 400) {
         const message = error.response.data.message;
         toast.warn(message);
+      } else if (status === 404) {
+        formRef.current?.setFieldError('user', 'User not found');
       } else {
-        toast.error('Error in server!');
+        toast.error(`Error in server!`);
       }
 
       buttonRef.current?.finishLoad();

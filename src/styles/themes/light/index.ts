@@ -3,6 +3,7 @@ import avatar from './avatar';
 import button from './button';
 import checkbox from './checkbox';
 import input from './input';
+import modal from './modal';
 import sideNavigation from './sideNavigation';
 import table from './table';
 import text from './text';
@@ -15,6 +16,7 @@ export const theme = {
   button,
   checkbox,
   input,
+  modal,
   sideNavigation,
   table,
   text,

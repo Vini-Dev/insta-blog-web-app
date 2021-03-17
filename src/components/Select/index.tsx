@@ -84,9 +84,11 @@ const Select: FC<SelectPropsInterface> = ({
         isMulti={isMulti}
         {...rest}
       />
-      {error && (
-        <InputErrorMessage>{error.replace(name, label)}</InputErrorMessage>
-      )}
+      <InputErrorMessage
+        fieldLabel={label}
+        fieldName={fieldName}
+        message={error}
+      />
     </Container>
   );
 };

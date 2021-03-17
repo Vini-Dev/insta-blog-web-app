@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import Button, { ButtonHandlers } from 'src/components/Button';
 import Input from 'src/components/Input';
-import Textarea from 'src/components/Textarea';
 import Title from 'src/components/Title';
 import { defaultOptions, formatErrors } from 'src/libs/yup';
 import api from 'src/services/api';
@@ -25,7 +24,6 @@ import {
 interface FormData {
   name: string;
   user: string;
-  biography: string;
   password: string;
   password_confirmation: string;
 }
@@ -88,7 +86,6 @@ const CreateAccount: FC = () => {
         <Form ref={formRef} onSubmit={handleOnSubmit}>
           <Input id="name" label="Name" name="name" />
           <Input id="user" label="User" name="user" />
-          <Textarea id="biography" label="Biography" name="biography" />
           <Input
             id="password"
             label="Password"

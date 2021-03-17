@@ -23,8 +23,12 @@ export const Content = styled.div`
     margin-bottom: 32px;
   }
 
+  .root-avatar {
+    margin: 0 auto 32px auto;
+  }
+
   .root-button {
-    margin-top: 8px;
+    margin-top: 16px;
   }
 
   .root-input-container {
@@ -37,14 +41,14 @@ export const Content = styled.div`
   }
 `;
 
-export const CreateAccount = styled.div`
+export const LogIn = styled.div`
   display: flex;
   justify-content: center;
 
   margin-top: 24px;
 `;
 
-export const CreateAccountLink = styled(Link)`
+export const LogInLink = styled(Link)`
   font-size: 14px;
   font-weight: 400;
   color: ${({ theme }: ThemeType) => theme.gray3};
@@ -58,7 +62,7 @@ export const CreateAccountLink = styled(Link)`
   }
 `;
 
-export const CreateAccountLinkHighlight = styled.span`
+export const LogInLinkHighlight = styled.span`
   color: ${({ theme }: ThemeType) => theme.primary};
   font-weight: 600;
 `;

@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 
 import { useSelector } from 'react-redux';
 import Post from 'src/components/Post';
@@ -9,11 +9,12 @@ import { Container } from './styles';
 
 interface PostsDataInterface {
   created_by: {
+    _id: string;
     name: string;
   };
   description: string;
   _id: string;
-  image: string;
+  image_url: string;
   likes: string[];
 }
 
@@ -21,19 +22,19 @@ const Posts: FC = () => {
   const [posts, setPosts] = useState([]);
   const { user } = useSelector((state: RootState) => state.auth);
 
-  useEffect(() => {
-    const getPosts = async () => {
-      try {
-        const response = await api.get('/posts?myLikes=true');
+  const getPosts = useCallback(async () => {
+    try {
+      const response = await api.get('/posts?myLikes=true');
 
-        setPosts(response.data);
-      } catch (error) {
-        setPosts([]);
-      }
-    };
-
-    getPosts();
+      setPosts(response.data);
+    } catch (error) {
+      setPosts([]);
+    }
   }, []);
+
+  useEffect(() => {
+    getPosts();
+  }, [getPosts]);
 
   return (
     <Container>
@@ -42,7 +43,7 @@ const Posts: FC = () => {
           _id,
           created_by,
           description,
-          image,
+          image_url,
           likes,
         }: PostsDataInterface) => {
           const liked = likes.includes(user._id);
@@ -53,8 +54,10 @@ const Posts: FC = () => {
               id={_id}
               createdBy={created_by}
               description={description}
-              image={image}
+              image={image_url}
               liked={liked}
+              onChange={getPosts}
+              allowDelete={user._id === created_by._id}
             />
           );
         }

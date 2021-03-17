@@ -5,6 +5,7 @@ export const { Types, Creators } = createActions({
   authFailure: [],
   authSuccess: ['token', 'user'],
   authLogout: [],
+  authUpdateUser: ['user'],
 });
 
 interface AuthState {
@@ -36,11 +37,17 @@ const authSuccess = (state, { token, user }) => ({
 
 const authLogout = () => INITIAL_STATE;
 
+const authUpdateUser = (state, { user }) => ({
+  ...state,
+  user: { ...state.user, ...user },
+});
+
 /* Reducers to types */
 const reducer = createReducer(INITIAL_STATE, {
   [Types.AUTH_FAILURE]: authFailure,
   [Types.AUTH_SUCCESS]: authSuccess,
   [Types.AUTH_LOGOUT]: authLogout,
+  [Types.AUTH_UPDATE_USER]: authUpdateUser,
 });
 
 export default reducer;

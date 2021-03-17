@@ -77,8 +77,33 @@ export const LikeButton = styled.button`
   svg {
     font-size: 24px;
     color: ${({ liked, theme }: LikeButtonInterface) =>
-      liked ? theme.success : theme.gray3};
+      liked ? theme.error : theme.gray3};
 
     transition: 200ms linear color;
+  }
+`;
+
+export const DeleteButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  background: none;
+  border: none;
+
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  svg {
+    font-size: 24px;
+    color: ${({ theme }: ThemeType) => theme.white};
+  }
+
+  &:hover svg {
+    color: ${({ theme }: ThemeType) => theme.error};
   }
 `;

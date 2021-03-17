@@ -7,6 +7,7 @@ export const Container = styled.div`
   grid-gap: 24px;
 
   width: 100%;
+  padding: 24px;
 
   @media ${devices.tablet} {
     padding: 24px 0 24px 16px;

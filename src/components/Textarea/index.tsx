@@ -49,9 +49,11 @@ const Textarea: FC<TextareaProps> = ({ id, label, name, ...props }) => {
           onFocus={handleOnFocus}
         />
       </FieldContainer>
-      {error && (
-        <InputErrorMessage>{error.replace(name, label)}</InputErrorMessage>
-      )}
+      <InputErrorMessage
+        fieldLabel={label}
+        fieldName={fieldName}
+        message={error}
+      />
     </Container>
   );
 };

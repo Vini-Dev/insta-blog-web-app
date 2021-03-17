@@ -1,20 +1,10 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Link } from 'react-router-dom';
-import { sizes } from 'src/styles/devices';
+import devices, { sizes } from 'src/styles/devices';
 import { ThemeType } from 'src/styles/themes/light';
 
 export const TOP_NAVIGATION_HEIGHT = 64;
-
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-`;
 
 export const Container = styled.div`
   position: sticky;
@@ -29,11 +19,20 @@ export const Container = styled.div`
 export const Content = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-
+  justify-content: space-between;
   max-width: ${sizes.tablet};
   margin: 0 auto;
-  padding: 16px 0;
+
+  padding: 16px;
+
+  @media ${devices.tablet} {
+    padding: 16px 0;
+  }
+`;
+
+export const Links = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export const CustomLink = styled(Link)`
@@ -45,7 +44,7 @@ export const CustomLink = styled(Link)`
   width: 28px;
 
   &:not(:last-of-type) {
-    margin-right: 4px;
+    margin-right: 16px;
   }
 
   &:last-of-type {

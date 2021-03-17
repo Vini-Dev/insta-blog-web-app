@@ -6,6 +6,9 @@ interface AuthSetTokenParams {
   payload: {
     auth: {
       token: string;
+      user: {
+        _id: string;
+      };
     };
   };
   type: string;
@@ -13,10 +16,14 @@ interface AuthSetTokenParams {
 
 export function* authSetToken({ payload }: AuthSetTokenParams): Generator {
   if (payload) {
-    const { token } = payload.auth;
+    const { token, user } = payload.auth;
 
     if (token) {
       api.defaults.headers.Authorization = token;
+
+      const { data }: any = yield call(api.get, `/users/${user._id}`);
+
+      yield put(AuthActions.authUpdateUser(data));
     } else {
       yield put(AuthActions.authLogout());
     }
@@ -33,9 +40,5 @@ export function* authSuccess({ token }: AuthSuccessParams): Generator {
 }
 
 export function* authLogout(): Generator {
-  try {
-    yield call(api.delete, '/admin/logout');
-
-    api.defaults.headers.Authorization = '';
-  } catch (error) {}
+  api.defaults.headers.Authorization = '';
 }
