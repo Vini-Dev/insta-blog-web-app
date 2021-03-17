@@ -5,12 +5,13 @@ import devices from 'src/styles/devices';
 import { ThemeType } from 'src/styles/themes/light';
 
 export const Container = styled.div`
-  position: sticky;
-  top: ${TOP_NAVIGATION_HEIGHT}px;
   width: 100%;
   padding: 24px;
 
   @media ${devices.tablet} {
+    position: sticky;
+    top: ${TOP_NAVIGATION_HEIGHT}px;
+
     height: ${() => `calc(100vh - ${TOP_NAVIGATION_HEIGHT}px)`};
     padding: 32px 0;
     margin-right: 8px;
